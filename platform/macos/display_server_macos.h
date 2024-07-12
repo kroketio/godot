@@ -141,10 +141,6 @@ private:
 	GLManagerLegacy_MacOS *gl_manager_legacy = nullptr;
 	GLManagerANGLE_MacOS *gl_manager_angle = nullptr;
 #endif
-#if defined(RD_ENABLED)
-	RenderingContextDriver *rendering_context = nullptr;
-	RenderingDevice *rendering_device = nullptr;
-#endif
 	String rendering_driver;
 
 	struct WarpEvent {
@@ -233,6 +229,11 @@ private:
 	Error _file_dialog_with_options_show(const String &p_title, const String &p_current_directory, const String &p_root, const String &p_filename, bool p_show_hidden, FileDialogMode p_mode, const Vector<String> &p_filters, const TypedArray<Dictionary> &p_options, const Callable &p_callback, bool p_options_in_cb);
 
 public:
+#if defined(RD_ENABLED)
+  RenderingContextDriver *rendering_context = nullptr;
+  RenderingDevice *rendering_device = nullptr;
+#endif
+
 	void menu_callback(id p_sender);
 
 	void emit_system_theme_changed();

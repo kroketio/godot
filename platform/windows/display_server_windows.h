@@ -433,11 +433,6 @@ class DisplayServerWindows : public DisplayServer {
 	GLManagerNative_Windows *gl_manager_native = nullptr;
 #endif
 
-#if defined(RD_ENABLED)
-	RenderingContextDriver *rendering_context = nullptr;
-	RenderingDevice *rendering_device = nullptr;
-#endif
-
 	RBMap<int, Vector2> touch_state;
 
 	int pressrc;
@@ -636,6 +631,11 @@ class DisplayServerWindows : public DisplayServer {
 	String _get_klid(HKL p_hkl) const;
 
 public:
+#if defined(RD_ENABLED)
+  RenderingContextDriver *rendering_context = nullptr;
+  RenderingDevice *rendering_device = nullptr;
+#endif
+
 	LRESULT WndProcFileDialog(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	LRESULT WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 	LRESULT MouseProc(int code, WPARAM wParam, LPARAM lParam);

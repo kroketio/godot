@@ -143,10 +143,6 @@ class DisplayServerX11 : public DisplayServer {
 	GLManager_X11 *gl_manager = nullptr;
 	GLManagerEGL_X11 *gl_manager_egl = nullptr;
 #endif
-#if defined(RD_ENABLED)
-	RenderingContextDriver *rendering_context = nullptr;
-	RenderingDevice *rendering_device = nullptr;
-#endif
 
 #if defined(DBUS_ENABLED)
 	FreeDesktopScreenSaver *screensaver = nullptr;
@@ -379,6 +375,11 @@ protected:
 	void _window_changed(XEvent *event);
 
 public:
+#if defined(RD_ENABLED)
+  RenderingContextDriver *rendering_context = nullptr;
+  RenderingDevice *rendering_device = nullptr;
+#endif
+
 	bool mouse_process_popups();
 	void popup_open(WindowID p_window);
 	void popup_close(WindowID p_window);

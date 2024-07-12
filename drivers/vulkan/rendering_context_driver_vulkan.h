@@ -95,12 +95,13 @@ public:
 		}
 	};
 
+  VkInstance instance = VK_NULL_HANDLE;
+
 private:
 	struct DeviceQueueFamilies {
 		TightLocalVector<VkQueueFamilyProperties> properties;
 	};
 
-	VkInstance instance = VK_NULL_HANDLE;
 	uint32_t instance_api_version = VK_API_VERSION_1_0;
 	HashMap<CharString, bool> requested_instance_extensions;
 	HashSet<CharString> enabled_instance_extension_names;

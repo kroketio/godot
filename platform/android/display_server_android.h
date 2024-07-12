@@ -72,10 +72,6 @@ class DisplayServerAndroid : public DisplayServer {
 
 	CursorShape cursor_shape = CursorShape::CURSOR_ARROW;
 
-#if defined(RD_ENABLED)
-	RenderingContextDriver *rendering_context = nullptr;
-	RenderingDevice *rendering_device = nullptr;
-#endif
 	NativeMenu *native_menu = nullptr;
 
 	ObjectID window_attached_instance_id;
@@ -92,6 +88,11 @@ class DisplayServerAndroid : public DisplayServer {
 	static void _dispatch_input_events(const Ref<InputEvent> &p_event);
 
 public:
+#if defined(RD_ENABLED)
+  RenderingContextDriver *rendering_context = nullptr;
+  RenderingDevice *rendering_device = nullptr;
+#endif
+
 	static DisplayServerAndroid *get_singleton();
 
 	virtual bool has_feature(Feature p_feature) const override;

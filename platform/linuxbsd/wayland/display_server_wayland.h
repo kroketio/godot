@@ -123,11 +123,6 @@ class DisplayServerWayland : public DisplayServer {
 
 	String rendering_driver;
 
-#ifdef RD_ENABLED
-	RenderingContextDriver *rendering_context = nullptr;
-	RenderingDevice *rendering_device = nullptr;
-#endif
-
 #ifdef GLES3_ENABLED
 	EGLManager *egl_manager = nullptr;
 #endif
@@ -157,6 +152,11 @@ class DisplayServerWayland : public DisplayServer {
 	void try_suspend();
 
 public:
+#ifdef RD_ENABLED
+  RenderingContextDriver *rendering_context = nullptr;
+  RenderingDevice *rendering_device = nullptr;
+#endif
+
 	virtual bool has_feature(Feature p_feature) const override;
 
 	virtual String get_name() const override;

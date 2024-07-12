@@ -65,10 +65,6 @@ class DisplayServerIOS : public DisplayServer {
 
 	_THREAD_SAFE_CLASS_
 
-#if defined(RD_ENABLED)
-	RenderingContextDriver *rendering_context = nullptr;
-	RenderingDevice *rendering_device = nullptr;
-#endif
 	NativeMenu *native_menu = nullptr;
 
 	id tts = nullptr;
@@ -92,6 +88,10 @@ class DisplayServerIOS : public DisplayServer {
 	~DisplayServerIOS();
 
 public:
+#if defined(RD_ENABLED)
+  RenderingContextDriver *rendering_context = nullptr;
+  RenderingDevice *rendering_device = nullptr;
+#endif
 	String rendering_driver;
 
 	static DisplayServerIOS *get_singleton();
