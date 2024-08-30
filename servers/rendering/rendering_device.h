@@ -842,6 +842,7 @@ private:
 
 public:
 	RenderingContextDriver *get_context_driver() const { return context; }
+	RenderingDeviceDriver *get_device_driver() const { return driver; }
 
 	const RDD::Capabilities &get_device_capabilities() const { return driver->get_capabilities(); }
 

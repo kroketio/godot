@@ -1053,6 +1053,9 @@ Error RenderingDeviceDriverVulkan::_initialize_device(const LocalVector<VkDevice
 		}
 	}
 
+	WEBVIEW_VK_DEVICE = reinterpret_cast<uint64_t>(vk_device);
+	printf("set WEBVIEW_VK_DEVICE\n");
+
 	return OK;
 }
 
@@ -1334,6 +1337,10 @@ void RenderingDeviceDriverVulkan::_set_object_name(VkObjectType p_object_type, u
 Error RenderingDeviceDriverVulkan::initialize(uint32_t p_device_index, uint32_t p_frame_count) {
 	context_device = context_driver->device_get(p_device_index);
 	physical_device = context_driver->physical_device_get(p_device_index);
+
+	WEBVIEW_VK_PHYSICAL_DEVICE = reinterpret_cast<uint64_t>(physical_device);
+	printf("set WEBVIEW_VK_PHYSICAL_DEVICE, (vk) device index %d\n", p_device_index);
+
 	vkGetPhysicalDeviceProperties(physical_device, &physical_device_properties);
 
 	frame_count = p_frame_count;

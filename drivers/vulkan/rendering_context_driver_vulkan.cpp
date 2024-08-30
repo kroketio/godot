@@ -732,6 +732,9 @@ Error RenderingContextDriverVulkan::_initialize_instance() {
 	}
 
 	err = _create_vulkan_instance(&instance_info, &instance);
+
+	WEBVIEW_VK_INSTANCE = reinterpret_cast<uint64_t>(instance);
+	printf("set WEBVIEW_VK_INSTANCE\n");
 	ERR_FAIL_COND_V(err != OK, err);
 
 #ifdef USE_VOLK

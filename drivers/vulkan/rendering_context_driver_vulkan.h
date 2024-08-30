@@ -33,6 +33,7 @@
 
 #ifdef VULKAN_ENABLED
 
+#include "core/io/browser.h"
 #include "servers/rendering/rendering_context_driver.h"
 
 #if defined(DEBUG_ENABLED) || defined(DEV_ENABLED)

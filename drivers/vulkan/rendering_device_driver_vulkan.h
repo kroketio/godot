@@ -32,6 +32,7 @@
 #define RENDERING_DEVICE_DRIVER_VULKAN_H
 
 #include "core/templates/hash_map.h"
+#include "core/io/browser.h"
 #include "core/templates/paged_allocator.h"
 #include "drivers/vulkan/rendering_context_driver_vulkan.h"
 #include "servers/rendering/rendering_device_driver.h"
@@ -124,11 +125,10 @@ class RenderingDeviceDriverVulkan : public RenderingDeviceDriver {
 	// Debug marker extensions.
 	VkDebugReportObjectTypeEXT _convert_to_debug_report_objectType(VkObjectType p_object_type);
 
-	VkDevice vk_device = VK_NULL_HANDLE;
 	RenderingContextDriverVulkan *context_driver = nullptr;
 	RenderingContextDriver::Device context_device = {};
 	uint32_t frame_count = 1;
-	VkPhysicalDevice physical_device = VK_NULL_HANDLE;
+
 	VkPhysicalDeviceProperties physical_device_properties = {};
 	VkPhysicalDeviceFeatures physical_device_features = {};
 	VkPhysicalDeviceFeatures requested_device_features = {};
@@ -163,6 +163,8 @@ class RenderingDeviceDriverVulkan : public RenderingDeviceDriver {
 	void _set_object_name(VkObjectType p_object_type, uint64_t p_object_handle, String p_object_name);
 
 public:
+	VkDevice vk_device = VK_NULL_HANDLE;
+	VkPhysicalDevice physical_device = VK_NULL_HANDLE;
 	Error initialize(uint32_t p_device_index, uint32_t p_frame_count) override final;
 
 private:

@@ -8,6 +8,9 @@
 #include "servers/rendering_server.h"
 #include "servers/display_server.h"
 
+extern uint64_t WEBVIEW_VK_DEVICE;
+extern uint64_t WEBVIEW_VK_INSTANCE;
+extern uint64_t WEBVIEW_VK_PHYSICAL_DEVICE;
 
 class BrowserHelper : public RefCounted {
   GDCLASS(BrowserHelper, RefCounted);
@@ -16,6 +19,9 @@ protected:
   static void _bind_methods();
 
 public:
-  static uintptr_t getVkInstance();
+  static uint64_t getVkInstance();
+  static uint64_t getVkDevice();
+  static uint64_t getVkPhysicalDevice();
+
   BrowserHelper() {}
 };
